@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+Hello, world! | Home Page
+{% endblock %}
+
+{% block page_title %}
+Webscraping Tutorial
+{% endblock %}
+
+{% block content %}
+    {% for row in rows %}
+        <div class="post">
+            <h2 class="title">{{row[1]}}</h2>
+            <div class="article">{{row[2]|safe}}</div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block pagination %}
+    {% if prev_page > 0 %}
+        <a class="prev" href="?page={{prev_page}}">Prev</a>
+    {% elif prev_page == 0 %}
+        <a class="prev" href="/home">Prev</a>
+    {% endif %}
+    <a class="next" href="?page={{next_page}}">Next</a>
+{% endblock %}
+
+{% block footer %}
+Webscraping tutorial Flask app by <a href="http://mkdir.info">bmcculley</a>.
+{% endblock %}
